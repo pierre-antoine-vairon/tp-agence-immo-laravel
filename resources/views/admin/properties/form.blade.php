@@ -24,10 +24,12 @@
             @include('shared.input', ['class' => 'col', 'name' => 'floor', 'label' => 'Étages', 'value' => $property->floor])
         </div>
         <div class="row">
-            @include('shared.input', ['class' => 'col', 'name' => 'adress', 'label' => 'Adresse', 'value' => $property->adress])
-            @include('shared.input', ['class' => 'col', 'name' => 'bedrooms', 'city' => 'Ville', 'value' => $property->city])
+            @include('shared.input', ['class' => 'col', 'name' => 'adresse', 'label' => 'Adresse', 'value' => $property->adresse])
+            @include('shared.input', ['class' => 'col', 'name' => 'city', 'city' => 'Ville', 'value' => $property->city])
             @include('shared.input', ['class' => 'col', 'name' => 'postal_code', 'label' => 'Code postal', 'value' => $property->postal_code])
         </div>
+        @include('shared.checkbox', ['name' => 'sold', 'label' => 'Vendu', 'value' => $property->sold])
+
 
         <div>
             <button class="btn btn-primary">
