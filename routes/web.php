@@ -20,5 +20,5 @@ Route::get('/', function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // resource() : creer toutes les routes CRUD
-    Route::resource('property', PropertyController::class);
+    Route::resource('property', PropertyController::class)->except(['show']);
 });
