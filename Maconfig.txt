@@ -1,0 +1,10 @@
+Debugbar:
+composer require barryvdh/laravel-debugbar --dev
+
+IDE HELPER :
+composer require --dev barryvdh/laravel-ide-helper
+-- Commande accessible : 
+php artisan ide-helper:generate - PHPDoc generation for Laravel Facades
+-- Auto complétion :
+php artisan ide-helper:models -M - PHPDocs for models
+php artisan ide-helper:meta - PhpStorm Meta file
