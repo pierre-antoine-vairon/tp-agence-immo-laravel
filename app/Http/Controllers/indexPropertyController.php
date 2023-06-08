@@ -12,17 +12,17 @@ class indexPropertyController extends Controller
     public function index(SearchPropertiesRequest $request)
     {
         $query = Property::query();
-        if ($request->has('price')) {
-            $query = $query->where('price', '<=', $request->input('price'));
+        if ($request->validated('price')) {
+            $query = $query->where('price', '<=', $request->validated('price'));
         }
-        if ($request->has('surface')) {
-            $query = $query->where('surface', '>=', $request->input('surface'));
+        if ($request->validated('surface')) {
+            $query = $query->where('surface', '>=', $request->validated('surface'));
         }
-        if ($request->has('rooms')) {
-            $query = $query->where('rooms', '>=', $request->input('rooms'));
+        if ($request->validated('rooms')) {
+            $query = $query->where('rooms', '>=', $request->validated('rooms'));
         }
-        if ($request->has('title')) {
-            $query = $query->where('title', 'like', "%{$request->input('title')}%");
+        if ($request->validated('title')) {
+            $query = $query->where('title', 'like', "%{$request->validated('title')}%");
         }
         return view('property.index', [
             'properties' => $query->paginate(16),
@@ -32,5 +32,13 @@ class indexPropertyController extends Controller
 
     public function show(string $slug, Property $property)
     {
+        $expectedSlug = $property->getSlug();
+        if ($slug != $expectedSlug) {
+            return to_route('property.show', ['slug' => $expectedSlug, 'property' => $property]);
+        }
+
+        return view('property.show', [
+            'property' => $property
+        ]);
     }
 }

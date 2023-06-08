@@ -18,11 +18,16 @@
 
     <div class="container">
         <div class="row">
-            @foreach ($properties as $property) 
-            <div class="col-3 mb-4">
-                @include('property.card')
-            </div>
-            @endforeach
+            @forelse ($properties as $property) 
+                <div class="col-3 mb-4">
+                    @include('property.card')
+                </div>
+            @empty
+                <div class="col text-center">
+                    Aucun résultat.
+                </div>
+
+            @endforelse
         </div>
 
         <div class="my-4">
