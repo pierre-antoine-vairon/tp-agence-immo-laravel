@@ -13,11 +13,10 @@
         <h2>Nos derniers biens</h2>
         <div class="row">
             @foreach ($properties as $property) 
-                
-            @endforeach
             <div class="col">
-
+                @include('property.card')
             </div>
+            @endforeach
         </div>
     </div>
 @endsection
