@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\indexPropertyController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,10 @@ Route::get('/biens/{slug}-{property}', [indexPropertyController::class, 'show'])
 Route::post('/biens/{property}/contact', [indexPropertyController::class, 'contact'])->name('property.contact')->where([
     'property' => $idRegex
 ]);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'doLogin']);
+Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // resource() : creer toutes les routes CRUD
