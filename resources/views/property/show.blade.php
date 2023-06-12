@@ -6,7 +6,7 @@
     
     <div class="container mt-4">
         <h1>{{ $property->title }}</h1>
-        <h2>{{ $property->price }}</h2>
+        <h2>{{ $property->rooms }} pièce(s) - {{ $property->surface }} m²</h2>
 
         <div class="text-primary fw-bold">
             {{ number_format($property->price, thousands_separator: ' ' ) }} €
@@ -17,7 +17,7 @@
         <div class="mt-4">
             <h4>Intéressé par ce bien ?</h4>
 
-            <form action="" method="post" class="vstack gap-3">
+            <form action="{{ route('property.contact', $property) }}" method="post" class="vstack gap-3">
                 @csrf
                 <div class="row">
                     @include('shared.input', ['class' => 'col', 'name' => 'firstname', 'label' => 'Prénom'])

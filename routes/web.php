@@ -28,6 +28,10 @@ Route::get('/biens/{slug}-{property}', [indexPropertyController::class, 'show'])
     'slug' => $slugRegex
 ]);
 
+Route::post('/biens/{property}/contact', [indexPropertyController::class, 'contact'])->name('property.contact')->where([
+    'property' => $idRegex
+]);
+
 Route::prefix('admin')->name('admin.')->group(function () {
     // resource() : creer toutes les routes CRUD
     Route::resource('property', PropertyController::class)->except(['show']);
