@@ -32,7 +32,7 @@ Route::post('/biens/{property}/contact', [indexPropertyController::class, 'conta
     'property' => $idRegex
 ]);
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // resource() : creer toutes les routes CRUD
     Route::resource('property', PropertyController::class)->except(['show']);
     Route::resource('option', OptionController::class)->except(['show']);
